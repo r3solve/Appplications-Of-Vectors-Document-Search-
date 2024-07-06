@@ -25,7 +25,7 @@ class VectorDB:
         return google_ef._model_name
 
     def create_collection(self, name: str) -> None:
-        self.client.create_collection(name=name, embedding_function=self.get_embeddings_scheme)
+        self.client.create_collection(name=name, embedding_function=google_ef)
 
     def add_to_collection(self, collection_name: str, docs: List[str]) -> None:
         try:
@@ -40,17 +40,17 @@ class VectorDB:
     def get_collection(self, name: str) -> chromadb.Collection:
         return self.client.get_collection(name=name)
 
-    def query_collection(self, collection_name: str, query_text: List[str], topK: int = 1) -> Any:
+    def query_collection(self, collection_name: str, query_text: List[str], topK: int = 10) -> Any:
         collection = self.get_collection(collection_name)
         return collection.query(
             query_texts=query_text,
             n_results=topK,
         )
 
-dialogueDb = VectorDB()
+# dialogueDb = VectorDB()
 
-dialogueDb.create_collection('dialogue')
-dialogueDb.add_to_collection('dialogue', ["Human: Hi my name is rufus, AI:Okay Rufus Nice to meet you! :)", "Human:I am 32 years old, AI:Nice nice :)"])
+# dialogueDb.create_collection('dialogue')
+# dialogueDb.add_to_collection('dialogue', ["Human: Hi my name is rufus, AI:Okay Rufus Nice to meet you! :)", "Human:I am 32 years old, AI:Nice nice :)"])
 
-res = dialogueDb.query_collection('dialogue', ['How old is the human ?'], topK=1)
-print(res)
+# res = dialogueDb.query_collection('dialogue', ['How old is the human ?'], topK=1)
+# print(res['documents'])

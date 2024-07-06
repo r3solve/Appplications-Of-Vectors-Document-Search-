@@ -3,10 +3,6 @@ import typing
 import numpy as np
 import chromadb
 
-client = chromadb.Client()
-collection = client.create_collection(name="Documents")
-
-
 
 class EmbeddingsClass:
     def __init__(self, Config:dict) -> None:
@@ -45,5 +41,4 @@ class EmbeddingsClass:
         if len(self.text) == 0:
             raise ValueError("None text passed for Processings")
         return self.text
-    
 
