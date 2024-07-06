@@ -1,8 +1,6 @@
 import google.generativeai as genai
 import typing
 import numpy as np
-import chromadb
-
 
 class EmbeddingsClass:
     def __init__(self, Config:dict) -> None:

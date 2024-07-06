@@ -46,7 +46,7 @@ class VectorDB:
             query_texts=query_text,
             n_results=topK,
         )
-
+    
 # dialogueDb = VectorDB()
 
 # dialogueDb.create_collection('dialogue')
