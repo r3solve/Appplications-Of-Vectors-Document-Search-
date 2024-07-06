@@ -1,7 +1,7 @@
 from embeddings import EmbeddingsClass
-
+from api_key import *
 def main():
-    Config = {'key':"AIzaSyBZa7h0sSf_7saJ6SSc5t6S5SiIbUye2-c", 'model':'models/embedding-001'}
+    Config = {'key':API_KEY, 'model':'models/embedding-001'}
     embd = EmbeddingsClass(Config=Config)
     x = embd.generate_embeddings(text="What is your name ? ", pprint=True)   
     print(x)
